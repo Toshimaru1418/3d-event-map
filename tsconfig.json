@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "esnext",          // 最新のJavaScriptのサポート
+    "module": "esnext",          // 動的インポートをサポートするために 'esnext' を設定
+    "moduleResolution": "node",
+    "paths": {
+      "three/examples/jsm/controls/OrbitControls": ["./node_modules/@types/three/examples/jsm/controls/OrbitControls"]
+    },
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "lib": ["es2016", "dom"],
+    "jsx": "react-jsx"
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"]
+}
