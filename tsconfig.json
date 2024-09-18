@@ -3,8 +3,9 @@
     "target": "esnext",          // 最新のJavaScriptのサポート
     "module": "esnext",          // 動的インポートをサポートするために 'esnext' を設定
     "moduleResolution": "node",
+    "baseUrl": "./",             // プロジェクトのルートディレクトリを基準にする
     "paths": {
-      "three/examples/jsm/controls/OrbitControls": ["./node_modules/@types/three/examples/jsm/controls/OrbitControls"]
+      "three/examples/*": ["node_modules/three/examples/jsm/*"]
     },
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
