@@ -6,7 +6,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 const booths = [
     // 上段（12ブース）
     { id: 12, position: [-22, 0, -34], size: [4, 1.5, 2], name: "株式会社井ゲタ竹内", description: "産直産地沖縄県恩納村産のモズクを通して、海を守り育む活動を皆さんと行っています。恩納村産の糸もずくの中から、特にヌメリの強い原藻を選別して使用。2024年からはぶどう糖果糖液糖不使用にリニューアルいたしました。ブースでは試食の他に、サンゴの苗となる基台へのメッセージ描きを行います。。", link: "https://www.igetatakeuchi.co.jp/", image: "/images/booth12-1.jpg?height=100&width=100", image2: "/images/booth12-2.jpg?height=100&width=100" },
-    { id: 11, position: [-17, 0, -34], size: [2, 1.5, 2], name: "株式会社カジノヤ", description: "せいきょう納豆（中粒、たれ・からし付）は、昨年10月発売以来大好評の納豆です。「中粒なのに柔らかくちゃんと大豆の味がする」時間をかけ、じっくり納豆造りをしているから頂けた感想だと思います。小粒も美味しいですが、大豆本来の味が感じられる「中粒」も楽しんで下さい。", link: "https://www.kajinoya.co.jp/", image: "/images/booth11-1.jpg?height=100&width=100", image2: "/images/booth11-2.png?height=100&width=100" },
+    { id: 11, position: [-17, 0, -34], size: [2, 1.5, 2], name: "株式会社カジノヤ", description: "せいきょう納豆（中粒、たれ・からし付）は、昨年10月発売以来大好評の納豆です。「中粒なのに柔らかくちゃんと大豆の味がする」時間をかけ、じっくり納豆造りをしているから頂けた感想だと思います。小粒も美味しいですが、大豆本来の味が感じられる「中粒」も楽しんで下さい。", link: "https://www.kajinoya.co.jp/", image: "/images/booth11-1.jpg?height=100&width=100", image2: "/images/booth11-2.jpg?height=100&width=100" },
     { id: 10, position: [-14, 0, -34], size: [2, 1.5, 2], name: "株式会社中村商店", description: "本品はナトリウム石けんを配合することで、固形の化粧石けんに近い感触で使いやすい液体のボディソープ。洗顔ソープに使用されるミリスチン酸を贅沢に使用、クリーミーな泡立ちを実現しました。石けん初心者に最適です。", link: "https://example.com/booth3", image: "/images/booth10-1.jpg?height=100&width=100", image2: "/images/booth10-2.jpg?height=100&width=100" },
     { id: 9, position: [-11, 0, -34], size: [2, 1.5, 2], name: "グリンリーフ株式会社", description: "産直野菜で作った糖しぼり大根は、産直大根を砂糖塩米酢で漬けたお漬物です。お漬物が苦手なお子さんでも食べられる甘い浅漬けです。", link: "https://example.com/booth4", image: "/images/booth9-1.jpg?height=100&width=100", image2: "/images/booth9-2.jpg?height=100&width=100" },
     { id: 8, position: [-8, 0, -34], size: [2, 1.5, 2], name: "株式会社河村屋", description: "白菜は標高1000mにある信州望月高原のグループ会社圃場で収穫された白菜を使用。柔らかい葉の白菜は生育が難しく数が多く採れません。その稀少な白菜に、秘伝のヤンニョムを混ぜ、しっかりと熟成して旨味を引き出したキムチとなっております。", link: "https://example.com/booth5", image: "/images/booth8-1.jpg?height=100&width=100", image2: "/images/booth8-2.jpg?height=100&width=100" },
@@ -30,7 +30,7 @@ const booths = [
     { id: 22, position: [-12, 0, -20], size: [2, 1.5, 2], name: "共生食品株式会社", description: "産直大豆の旨味をギュッと閉じ込めました。冷奴はもちろん、もめん豆腐を使って麻婆豆腐や肉豆腐を作れば、ご飯のおかずにぴったりな1品が出来上がります。", link: "https://example.com/booth21", image: "/images/booth22-1.jpg?height=100&width=100", image2: "/images/booth22-2.jpg?height=100&width=100" },
     { id: 21, position: [-9, 0, -20], size: [2, 1.5, 2], name: "千葉県漁業協同組合連合会", description: "脂の乗ったノルウェー産さばを骨取り加工し、独自に開発した大根入りたれで煮付けました。ほうれん草と共に盛り付けると彩り豊かになり格別です。", link: "https://example.com/booth22", image: "/images/booth21-1.jpg?height=100&width=100", image2: "/images/booth21-2.JPG?height=100&width=100" },
     { id: 20, position: [-6, 0, -20], size: [2, 1.5, 2], name: "株式会社にんべんフーズ", description: "「もっとだしの風味を活かした白だしを」という開発メンバーの思いから、試行錯誤を重ねて開発された「素材がいきる白だし」。だし素材には、国内製造の3種類の魚節の混合だしと、北海道産の3種類の昆布だしを合わせ、だしを約65%以上配合した上品な風味の白だしに仕上げました。淡色で穏やかな風味にしてありますので、素材の持ち味を引き立て、料理の味に深みを加える万能調味料です。", link: "https://example.com/booth23", image: "/images/booth20-1.jpg?height=100&width=100", image2: "/images/booth20-2.jpg?height=100&width=100" },
-    { id: 19, position: [-3, 0, -20], size: [2, 1.5, 2], name: "ホクレン農業協同組合連合会", description: "北海道根釧地区の生乳だけを、新鮮なうちにパック。パックした翌々日に組合員のもとへ届きます。HTST殺菌法（72℃・15秒殺菌）で生乳本来の風味やコクを大切した牛乳です。", link: "https://example.com/booth24", image: "/images/booth19-1.jpg?height=100&width=100", image2: "/images/booth19-2.jfif?height=100&width=100" },
+    { id: 19, position: [-3, 0, -20], size: [2, 1.5, 2], name: "ホクレン農業協同組合連合会", description: "北海道根釧地区の生乳だけを、新鮮なうちにパック。パックした翌々日に組合員のもとへ届きます。HTST殺菌法（72℃・15秒殺菌）で生乳本来の風味やコクを大切した牛乳です。", link: "https://example.com/booth24", image: "/images/booth19-1.jpg?height=100&width=100", image2: "/images/booth19-2.jpg?height=100&width=100" },
     { id: 18, position: [2, 0, -20], size: [2, 1.5, 2], name: "デイリーフーズ東京販売㈱", description: "PB商品のジャムやフルーツソースの中でも一番の人気となっているのが“いちごジャム（プレザーブ）”。果実含有量は最終商品として70%以上となっております。特徴は果肉を残したプレザーブスタイルで十二分にいちごの果実感を味わえます。", link: "https://example.com/booth25", image: "/images/booth18-1.jpg?height=100&width=100", image2: "/images/booth18-2.jpg?height=100&width=100" },
     { id: 17, position: [5.5, 0, -20], size: [4.5, 1.5, 2], name: "株式会社パルブレッド", description: "生地に自家製の湯種と自然発酵種を配合し、しっとりもっちりとした食感に仕上げた角食パンです。口溶けが良く、そのままでも美味しくお召し上がりいただけます。幅広い世代層の方に。", link: "https://example.com/booth26", image: "/images/booth17-1.jpg?height=100&width=100", image2: "/images/booth17-2.jpg?height=100&width=100" },
     { id: 16, position: [11, 0, -20], size: [2, 1.5, 2], name: "興真乳業株式会社", description: "発売から長年ご愛顧を頂いているロングセラー商品です。原料は、シンプルに生乳、コーヒー、砂糖のみ。弊社の工場がある、千葉県の新鮮な生乳を50%使用した濃厚で飲みごたえのあるカフェオレです。ぜひ、ご賞味ください。", link: "https://example.com/booth27", image: "/images/booth16-1.jpg?height=100&width=100", image2: "/images/booth16-2.jpg?height=100&width=100" },
@@ -39,17 +39,17 @@ const booths = [
     // 中央セクション（2列目：10ブース）
     { id: 34, position: [-18, 0, -16], size: [2, 1.5, 2], name: "全国漁業協同組合連合会", description: "国産さばを使用。頭、内臓等を取り除き、骨付きのまま高圧スチーム加熱を行い、骨までやわらかく食べられるよう加工した後、唐揚げにし、自社製造の甘酢たれと一緒にパックしました。解凍するだけで、骨まで丸ごと全部食べられる商品です。お子様にも食べやすい酸味を抑えた甘口タイプです。", link: "https://example.com/booth30", image: "/images/booth34-1.jpg?height=100&width=100", image2: "/images/booth34-2.JPG?height=100&width=100" },
     { id: 33, position: [-15, 0, -16], size: [2, 1.5, 2], name: "マルハニチロ㈱", description: "産直たけのこの食感と国産しいたけのうまみを生かしたしゅうまい。豚肉、鶏肉、玉ねぎ、しょうがは国産。皮には産直小麦を使用。", link: "https://example.com/booth31", image: "/images/booth33-1.jpg?height=100&width=100", image2: "/images/booth33-2.jpg?height=100&width=100" },
-    { id: 32, position: [-12, 0, -16], size: [2, 1.5, 2], name: "山菱水産株式会社", description: "まぐろは「魚の王様」と呼ばれる特別な魚。味わいと美しさで多くの方に愛されています。弊社は半世紀にわたりまぐろを専門に扱い、より安全でおいしいまぐろをお届けするために日々取り組んでおります。加熱することでとろける食感になるまぐろの腹身をぜひご賞味ください。", link: "https://example.com/booth32", image: "/images/booth32-1.jpg?height=100&width=100", image2: "/images/booth32-2.png?height=100&width=100" },
+    { id: 32, position: [-12, 0, -16], size: [2, 1.5, 2], name: "山菱水産株式会社", description: "まぐろは「魚の王様」と呼ばれる特別な魚。味わいと美しさで多くの方に愛されています。弊社は半世紀にわたりまぐろを専門に扱い、より安全でおいしいまぐろをお届けするために日々取り組んでおります。加熱することでとろける食感になるまぐろの腹身をぜひご賞味ください。", link: "https://example.com/booth32", image: "/images/booth32-1.jpg?height=100&width=100", image2: "/images/booth32-2.jpg?height=100&width=100" },
     { id: 31, position: [-9, 0, -16], size: [2, 1.5, 2], name: "エム・シーシー食品株式会社", description: "産直バジルのジェノベーゼソーは、朝摘み・手摘みにこだわった香りと彩りのよいバジルを使用し、シンプルかつ味わい深く仕上げたこだわりのパスタソースです。", link: "https://example.com/booth33", image: "/images/booth31-1.jpg?height=100&width=100", image2: "/images/booth31-2.jpg?height=100&width=100" },
     { id: 30, position: [-6, 0, -16], size: [2, 1.5, 2], name: "株式会社オルター・トレード・ジャパン", description: "フィリピンの生産者たちの暮らしを応援する民衆交易のバナナ。「バランゴン」はフィリピンに自生する品種で、ほんのりとした酸味と甘みが調和したコクのある味わいです。", link: "https://example.com/booth34", image: "/images/booth30-1.jpg?height=100&width=100", image2: "/images/booth30-2.jpg?height=100&width=100" },
-    { id: 29, position: [-3, 0, -16], size: [2, 1.5, 2], name: "パルシスム連合会畜産課", description: "太陽の光と自然の風が入る鶏舎で飼育。また、飼料の大半を占めるトウモロコシと大豆は遺伝子組換え作物が混ざらないよう分別生産流通管理されたものに限定し、さらにトウモロコシは収穫後農薬不使用です。食べたものが卵の質につながるからこそ、飼料の安全性にもこだわっています。", link: "https://example.com/booth35", image: "/images/booth29-1.jpg?height=100&width=100", image2: "/images/booth29-2.jpg?height=100&width=100" },
-    { id: 28, position: [4, 0, -16], size: [6, 1.5, 2], name: "パルシスム連合会産直事業本部青果・果物", description: "つくる人と食べる人がともに健康で安心そして持続可能なくらしを実現するために情報共有の場を創り、産直青果の推進に取り組んでいます。日々生産者が、手間ひまかけて大切に育てた産直青果をぜひお試し下さい。", link: "https://example.com/booth36", image: "/images/booth28-1.jpg?height=100&width=100", image2: "/images/booth28-2.jpg?height=100&width=100" },
+    { id: 29, position: [-3, 0, -16], size: [2, 1.5, 2], name: "連合会 畜産課(産直たまご)", description: "太陽の光と自然の風が入る鶏舎で飼育。また、飼料の大半を占めるトウモロコシと大豆は遺伝子組換え作物が混ざらないよう分別生産流通管理されたものに限定し、さらにトウモロコシは収穫後農薬不使用です。食べたものが卵の質につながるからこそ、飼料の安全性にもこだわっています。", link: "https://example.com/booth35", image: "/images/booth29-1.jpg?height=100&width=100", image2: "/images/booth29-2.jpg?height=100&width=100" },
+    { id: 28, position: [4, 0, -16], size: [6, 1.5, 2], name: "連合会 青果・果物", description: "つくる人と食べる人がともに健康で安心そして持続可能なくらしを実現するために情報共有の場を創り、産直青果の推進に取り組んでいます。日々生産者が、手間ひまかけて大切に育てた産直青果をぜひお試し下さい。", link: "https://example.com/booth36", image: "/images/booth28-1.jpg?height=100&width=100", image2: "/images/booth28-2.jpg?height=100&width=100" },
     { id: 27, position: [11, 0, -16], size: [2, 1.5, 2], name: "株式会社ウィルミナ", description: "ナチュライス 純米こうじ配合化粧液は、リニューアル時購入点数・パルシステム化粧品No.1!開発の原点は、組合員の肌悩みや『家事と育児で時間がない』というお悩みから。産直産地「JA新潟かがやき」のお米からつくった米こうじエキス配合の化粧液は、スーッと浸透して、うるおいに満ちたハリ肌へと導きます。1本でスキンケアが済むオールインワン機能で時短美容も叶います。", link: "https://example.com/booth37", image: "/images/booth27-1.jpg?height=100&width=100", image2: "/images/booth27-2.jpg?height=100&width=100" },
     { id: 26, position: [14, 0, -16], size: [2, 1.5, 2], name: "榛名直販株式会社", description: "群馬県産の生乳を使用した、生乳70%のむヨーグルト。余計なものは使用せず、生乳、砂糖、脱脂粉乳のみを使用した、安心して毎日でも飲みたいのむヨーグルトです。", link: "https://example.com/booth38", image: "/images/booth26-1.jpg?height=100&width=100", image2: "/images/booth26-2.jpg?height=100&width=100" },
     // 中央下段セクション（1ブース）
     { id: 97, position: [0, 0, -8], size: [5.5, 1.5, 2], name: "リサイクルトレー回収", description: "各ブースの試食にご利用いただいたリサイクルトレーは、重ねずにリサイクルトレー回収ブースにお持ちください！", link: "https://example.com/booth40", image: "/images/booth97-1.JPG?height=100&width=100", image2: "/images/booth97-2.jpg?height=100&width=100" },
     // 下段（8ブース）
-    { id: 38, position: [-20, 0, -2], size: [3, 1.5, 2], name: "パルシスム連合会産直事業本部米穀", description: "2024年産『パルシステム産直米』は10月より新米のお届けが始まります。欠品など商品の不足が続いておりましたが、徐々に解消予定となっております。引き続き、『パルシステム産直米』をよろしくお願いいたします。", link: "https://example.com/booth41", image: "/images/booth38-1.jpg?height=100&width=100", image2: "/images/booth38-2.jpg?height=100&width=100" },
+    { id: 38, position: [-20, 0, -2], size: [3, 1.5, 2], name: "連合会 米穀課", description: "2024年産『パルシステム産直米』は10月より新米のお届けが始まります。欠品など商品の不足が続いておりましたが、徐々に解消予定となっております。引き続き、『パルシステム産直米』をよろしくお願いいたします。", link: "https://example.com/booth41", image: "/images/booth38-1.jpg?height=100&width=100", image2: "/images/booth38-2.jpg?height=100&width=100" },
     { id: 37, position: [-16, 0, -2], size: [3, 1.5, 2], name: "㈱パル・ミート", description: "パル・ミート山形事業所にて製造しているポークウインナーをご提供いたします。原料には国産の冷蔵豚肉を使用し、発色剤を使用しない「無えんせき」で製造しています。炒め物やスープなど様々な料理によく合います。※豚脂には冷凍原料を使用しています。", link: "https://example.com/booth42", image: "/images/booth37-1.jpg?height=100&width=100", image2: "/images/booth37-2.jpg?height=100&width=100" },
     { id: 36, position: [-12, 0, -2], size: [3, 1.5, 2], name: "株式会社ニチレイフレッシュ", description: "国産若鶏の甘辛ささみカツは、フライ人気NO.1商品です。若鶏ササミをふんわりと衣付けして揚げた後、特製の甘辛たれにつけ込みました。4～6枚入りです。", link: "https://example.com/booth43", image: "/images/booth36-1.jpg?height=100&width=100", image2: "/images/booth36-2.jpg?height=100&width=100" },
     { id: 35, position: [-8, 0, -2], size: [2, 1.5, 2], name: "大洋香料(株)・ハチ食品(株)", description: "使いやすいフレークタイプのクリームシチューのルウ。シチュー以外に、ドリア・パスタソースや煮物等にも活用できます。", link: "https://example.com/booth44", image: "/images/booth35-1.jpg?height=100&width=100", image2: "/images/booth35-2.jpeg?height=100&width=100" },
@@ -375,74 +375,6 @@ export default function Component() {
                 createThickArrow(position, direction, length, color, 0.3, 0.6, 1.5);
             }
         });
-        // 花火のパーティクルシステムを作成する関数
-        function createFirework(position, color) {
-            const particleCount = 500;
-            const geometry = new THREE.BufferGeometry();
-            const positions = new Float32Array(particleCount * 3);
-            const velocities = new Float32Array(particleCount * 3);
-            const colors = new Float32Array(particleCount * 3);
-            for (let i = 0; i < particleCount; i++) {
-                const i3 = i * 3;
-                positions[i3] = position.x;
-                positions[i3 + 1] = position.y;
-                positions[i3 + 2] = position.z;
-                const velocity = new THREE.Vector3((Math.random() - 0.5) * 20, (Math.random() - 0.5) * 20, (Math.random() - 0.5) * 20);
-                velocities[i3] = velocity.x;
-                velocities[i3 + 1] = velocity.y;
-                velocities[i3 + 2] = velocity.z;
-                const colorRGB = new THREE.Color(color);
-                colors[i3] = colorRGB.r;
-                colors[i3 + 1] = colorRGB.g;
-                colors[i3 + 2] = colorRGB.b;
-            }
-            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-            geometry.setAttribute('velocity', new THREE.BufferAttribute(velocities, 3));
-            geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-            const material = new THREE.PointsMaterial({
-                size: 0.1,
-                vertexColors: true,
-                blending: THREE.AdditiveBlending,
-                transparent: true,
-                opacity: 1
-            });
-            const particles = new THREE.Points(geometry, material);
-            scene.add(particles);
-            return particles;
-        }
-        // 花火を更新する関数
-        function updateFirework(firework, deltaTime) {
-            const positions = firework.geometry.attributes.position.array;
-            const velocities = firework.geometry.attributes.velocity.array;
-            const colors = firework.geometry.attributes.color.array;
-            for (let i = 0; i < positions.length; i += 3) {
-                positions[i] += velocities[i] * deltaTime;
-                positions[i + 1] += velocities[i + 1] * deltaTime;
-                positions[i + 2] += velocities[i + 2] * deltaTime;
-                velocities[i + 1] -= 9.8 * deltaTime; // 重力の影響
-                colors[i + 1] -= 0.1 * deltaTime; // 色の減衰
-            }
-            firework.geometry.attributes.position.needsUpdate = true;
-            firework.geometry.attributes.color.needsUpdate = true;
-            // 不透明度を減少させる
-            const material = firework.material;
-            material.opacity -= 0.01;
-            if (material.opacity <= 0) {
-                scene.remove(firework);
-                return false;
-            }
-            return true;
-        }
-        const fireworks = [];
-        // 花火を打ち上げる関数
-        function launchFirework() {
-            const position = new THREE.Vector3((Math.random() - 0.5) * 40, 30 + Math.random() * 20, (Math.random() - 0.5) * 40);
-            const color = Math.random() * 0xffffff;
-            const firework = createFirework(position, color);
-            fireworks.push(firework);
-        }
-        // 定期的に花火を打ち上げる
-        const fireworkInterval = setInterval(launchFirework, 2000);
         // 特定のブースの周りに壁を追加する関数
         function addWallsAroundBooth(booth, directions) {
             const [x, y, z] = booth.position;
@@ -548,12 +480,6 @@ export default function Component() {
         function animate() {
             requestAnimationFrame(animate);
             const deltaTime = clock.getDelta();
-            // 花火の更新
-            for (let i = fireworks.length - 1; i >= 0; i--) {
-                if (!updateFirework(fireworks[i], deltaTime)) {
-                    fireworks.splice(i, 1);
-                }
-            }
             controls.update();
             renderer.render(scene, camera);
         }
