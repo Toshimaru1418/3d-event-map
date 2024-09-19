@@ -508,17 +508,22 @@ export default function Component() {
                     padding: '10px',
                     borderRadius: '5px',
                     boxShadow: '0 0 10px rgba(0,0,0,0.1)',
-                    maxWidth: '240px'
-                }, children: [_jsx("img", { src: selectedBooth.image, alt: selectedBooth.name, style: { width: '100%', height: 'auto', marginBottom: '10px' } }), _jsx("img", { src: selectedBooth.image2, alt: `${selectedBooth.name} - 追加画像`, style: { width: '100%', height: 'auto', marginBottom: '10px' } }), _jsx("h3", { children: selectedBooth.name }), _jsx("p", { children: selectedBooth.description }), _jsx("a", { href: selectedBooth.link, target: "_blank", rel: "noopener noreferrer", children: "\u6CE8\u6587\u3059\u308B" })] })), _jsx("a", { href: "https://www.palsystem-gunma.coop/", target: "_blank", style: {
+                    maxWidth: '240px',
+                    zIndex: 10, // モーダルを前面に
+                }, children: [_jsx("img", { src: selectedBooth.image, alt: selectedBooth.name, style: { width: '100%', height: 'auto', marginBottom: '10px' } }), _jsx("img", { src: selectedBooth.image2, alt: `${selectedBooth.name} - 追加画像`, style: { width: '100%', height: 'auto', marginBottom: '10px' } }), _jsx("h3", { children: selectedBooth.name }), _jsx("p", { children: selectedBooth.description }), _jsx("a", { href: selectedBooth.link, target: "_blank", rel: "noopener noreferrer", children: "\u6CE8\u6587\u3059\u308B" })] })), !selectedBooth && ( // モーダルが表示されていない時だけボタンを表示
+            _jsx("a", { href: "https://www.palsystem-gunma.coop/", target: "_blank", style: {
                     position: 'absolute',
-                    bottom: '14px',
-                    right: '14px',
-                    padding: '10px 20px',
-                    backgroundColor: '#4CAF50',
+                    bottom: '10px',
+                    right: '10px',
+                    padding: '6px 12px',
+                    backgroundColor: '#FF69B4',
                     color: 'white',
                     textDecoration: 'none',
-                    borderRadius: '5px',
+                    borderRadius: '15px',
+                    fontSize: '12px',
                     textAlign: 'center',
-                    boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
-                }, children: "\u3059\u3079\u3066\u306E\u30E1\u30FC\u30AB\u30FC\u30D6\u30FC\u30B9\u8A73\u7D30\u306F\u3053\u3061\u3089" })] }));
+                    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                    transition: 'transform 0.2s ease-in-out',
+                    zIndex: 5, // モーダルより下に表示
+                }, onMouseEnter: (e) => e.currentTarget.style.transform = 'scale(1.05)', onMouseLeave: (e) => e.currentTarget.style.transform = 'scale(1)', children: "\u3059\u3079\u3066\u306E\u30E1\u30FC\u30AB\u30FC\u30D6\u30FC\u30B9\u8A73\u7D30\u306F\u3053\u3061\u3089" }))] }));
 }

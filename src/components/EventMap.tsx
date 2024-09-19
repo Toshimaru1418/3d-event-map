@@ -593,7 +593,7 @@ animate()
   return (
     <div style={{ position: 'relative', width: '100%', height: '100vh' }}>
       <div ref={mountRef} style={{ width: '100%', height: '100%' }} />
-  
+
       {selectedBooth && (
         <div style={{
           position: 'absolute',
@@ -603,7 +603,8 @@ animate()
           padding: '10px',
           borderRadius: '5px',
           boxShadow: '0 0 10px rgba(0,0,0,0.1)',
-          maxWidth: '240px'
+          maxWidth: '240px',
+          zIndex: 10,  // モーダルを前面に
         }}>
           <img src={selectedBooth.image} alt={selectedBooth.name} style={{ width: '100%', height: 'auto', marginBottom: '10px' }} />
           <img src={selectedBooth.image2} alt={`${selectedBooth.name} - 追加画像`} style={{ width: '100%', height: 'auto', marginBottom: '10px' }} />
@@ -612,22 +613,28 @@ animate()
           <a href={selectedBooth.link} target="_blank" rel="noopener noreferrer">注文する</a>
         </div>
       )}
-  
-      {/* ここにリンクボタンを追加します */}
-      <a href="https://www.palsystem-gunma.coop/" target="_blank" style={{
-        position: 'absolute',
-        bottom: '14px',
-        right: '14px',
-        padding: '10px 20px',
-        backgroundColor: '#4CAF50',
-        color: 'white',
-        textDecoration: 'none',
-        borderRadius: '5px',
-        textAlign: 'center',
-        boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
-      }}>
-        すべてのメーカーブース詳細はこちら
-      </a>
+
+      {/* ここにリンクボタンを追加 */}
+      {!selectedBooth && (  // モーダルが表示されていない時だけボタンを表示
+        <a href="https://www.palsystem-gunma.coop/" target="_blank" style={{
+          position: 'absolute',
+          bottom: '10px',
+          right: '10px',
+          padding: '6px 12px',
+          backgroundColor: '#FF69B4',
+          color: 'white',
+          textDecoration: 'none',
+          borderRadius: '15px',
+          fontSize: '12px',
+          textAlign: 'center',
+          boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+          transition: 'transform 0.2s ease-in-out',
+          zIndex: 5,  // モーダルより下に表示
+        }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+          onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
+          すべてのメーカーブース詳細はこちら
+        </a>
+      )}
     </div>
   )
   
