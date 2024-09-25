@@ -88,7 +88,7 @@ const booths: Booth[] = [
 
 // フードドライブ・トイレ・授乳室
 { id: 45, position: [25, 0, 1], size: [2, 1.5, 2], name: "フードドライブブース", description: "ご持参いただいたフードドライブにご寄付いただく食品などは、こちらのブースでお預かりしております。ご寄付いただいた食品は今後のフードドライブ寄贈式などでフードバンク事業者に寄贈いたします。", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth45-1.webp?height=100&width=100", image2: "/images/booth45-2.webp?height=100&width=100" },
-{ id: 46, position: [-20, 0, 1], size: [2, 1.5, 2], name: "授乳室", description: "授乳室です。ご利用ください！", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth96-1.webp?height=100&width=100", image2: "/images/booth96-2.webp?height=100&width=100" },
+{ id: 46, position: [-20, 0, 1], size: [2, 1.5, 2], name: "授乳室", description: "授乳室です。ご利用ください！", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth46-1.webp?height=100&width=100", image2: "/images/booth46-2.webp?height=100&width=100" },
 { id: 101, position: [-25, 0, 1], size: [7, 1.5, 2], name: "女性用トイレ", description: "女性用トイレです。", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth101-1.webp?height=100&width=100", image2: "/images/booth101-2.webp?height=100&width=100" },
 { id: 102, position: [-12, 0, 1], size: [8, 1.5, 2], name: "男性用トイレ", description: "男性用トイレです。", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth102-1.webp?height=100&width=100", image2: "/images/booth102-2.webp?height=100&width=100" },
 
