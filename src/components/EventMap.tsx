@@ -36,10 +36,10 @@ const booths: Booth[] = [
 
 // 左列（5ブース）
 { id: 13, position: [-27, 0, -28], size: [2, 1.5, 6], name: "㈱スクロール", description: "スクロールは全国の生協様に衣料品・靴、バッグといった服飾雑貨商品を販売しているアパレルメーカーです！当日は普段触れないお洋服の展示はもちろん、親子で楽しめるオリジナルエコバッグ作り体験を実施いたします！", hasLink: true, link: "https://www.scroll-fan.com/", image: "/images/booth13-1.webp?height=100&width=100", image2: "/images/booth13-2.webp?height=100&width=100" },
-{ id: 90, position: [-27, 0, -22], size: [2, 1.5, 3], name: " マトメブクロヒツジを救え!", description: "まとめ袋ヒツジ", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth90-1.webp?height=100&width=100", image2: "/images/booth90-2.webp?height=100&width=100" },
-{ id: 91, position: [-27, 0, -18], size: [2, 1.5, 3], name: "リサイクル探し", description: "リサイクル探し", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth91-1.webp?height=100&width=100", image2: "/images/booth91-2.webp?height=100&width=100" },
-{ id: 92, position: [-27, 0, -14], size: [2, 1.5, 3], name: "エコ活ど～れだ", description: "エコ活どれだ？", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth92-1.webp?height=100&width=100", image2: "/images/booth92-2.webp?height=100&width=100" },
-{ id: 93, position: [-27, 0, -10], size: [2, 1.5, 3], name: "射的 de SDGs", description: "射的 de SDGs", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth93-1.webp?height=100&width=100", image2: "/images/booth93-2.webp?height=100&width=100" },
+{ id: 90, position: [-27, 0, -22], size: [2, 1.5, 3], name: " マトメブクロヒツジを救え!", description: "来場者のみなさんがご持参いただいた「商品まとめ袋」の総重量を予想しよう!予想が的中したあなたには景品を後日プレゼント!", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth90-1.webp?height=100&width=100", image2: "/images/booth90-2.webp?height=100&width=100" },
+{ id: 91, position: [-27, 0, -18], size: [2, 1.5, 3], name: "リサイクル探し", description: "ブースの中に隠れる、リサイクルできるものとできないものを“5つ”探すゲームです。ぜひチャレンジしてみてね!", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth91-1.webp?height=100&width=100", image2: "/images/booth91-2.webp?height=100&width=100" },
+{ id: 92, position: [-27, 0, -14], size: [2, 1.5, 3], name: "エコ活ど～れだ", description: "街の風景からエコな活動をしているところを探してみよう！君はいくつ見つけられるかな？", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth92-1.webp?height=100&width=100", image2: "/images/booth92-2.webp?height=100&width=100" },
+{ id: 93, position: [-27, 0, -10], size: [2, 1.5, 3], name: "射的 de SDGs", description: "「S」「D」「Gs」の的を狙ってshoot!3つを狙って、SDGsを完成させよう!", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth93-1.webp?height=100&width=100", image2: "/images/booth93-2.webp?height=100&width=100" },
 
 // 中央セクション（1列目：12ブース）
 { id: 25, position: [-21, 0, -20], size: [2, 1.5, 2], name: "三菱食品㈱", description: "産直豚肉、産直キャベツを使い、飽きの来ないシンプルな味付けで組合員様から長年愛されている餃子にしよう!。来年で発売から20年を迎える人気商品です。当日会場で焼き立てを是非お召し上がりください。", hasLink: true, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth25-1.webp?height=100&width=100", image2: "/images/booth25-2.webp?height=100&width=100" },
@@ -74,20 +74,20 @@ const booths: Booth[] = [
 { id: 37, position: [-16, 0, -2], size: [3, 1.5, 2], name: "㈱パル・ミート", description: "パル・ミート山形事業所にて製造しているポークウインナーをご提供いたします。原料には国産の冷蔵豚肉を使用し、発色剤を使用しない「無えんせき」で製造しています。炒め物やスープなど様々な料理によく合います。※豚脂には冷凍原料を使用しています。", hasLink: true, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth37-1.webp?height=100&width=100", image2: "/images/booth37-2.webp?height=100&width=100" },
 { id: 36, position: [-12, 0, -2], size: [3, 1.5, 2], name: "㈱ニチレイフレッシュ", description: "国産若鶏の甘辛ささみカツは、フライ人気NO.1商品です。若鶏ササミをふんわりと衣付けして揚げた後、特製の甘辛たれにつけ込みました。4～6枚入りです。", hasLink: true, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth36-1.webp?height=100&width=100", image2: "/images/booth36-2.webp?height=100&width=100" },
 { id: 35, position: [-8, 0, -2], size: [2, 1.5, 2], name: "大洋香料㈱・ハチ食品㈱", description: "使いやすいフレークタイプのクリームシチューのルウ。シチュー以外に、ドリア・パスタソースや煮物等にも活用できます。", hasLink: true, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth35-1.webp?height=100&width=100", image2: "/images/booth35-2.webp?height=100&width=100" },
-{ id: 94, position: [0, 0, -2], size: [5.5, 1.5, 2], name: "ゴミ分別ブース", description: "地元ミュージシャンステージ", link: "https://forms.gle/h5DLVLqZLLykifCJ8", hasLink: false, image: "/images/booth94-1.webp?height=100&width=100", image2: "/images/booth94-2.webp?height=100&width=100" },
+{ id: 94, position: [0, 0, -2], size: [5.5, 1.5, 2], name: "ゴミ分別ブース", description: "会場で出たゴミは、ゴミ分別ブースへお持ちください。会場内のゴミ箱はゴミ分別ブース一か所になっています。地球にやさしい商品展示会にするために、ゴミの分別にご協力をお願いいたします。", link: "https://forms.gle/h5DLVLqZLLykifCJ8", hasLink: false, image: "/images/booth94-1.webp?height=100&width=100", image2: "/images/booth94-2.webp?height=100&width=100" },
 { id: 40, position: [10, 0, -2], size: [3, 1.5, 2], name: "仲間づくりブース", description: "パルシステムをはじめたい！というお友だちといっしょにご来場のみなさまは、こちらのブースにお越しください！当日限定のご加入特典を準備してお待ちしております！", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth40-1.webp?height=100&width=100", image2: "/images/booth40-2.webp?height=100&width=100" },
-{ id: 95, position: [15, 0, -2], size: [6, 1.5, 4], name: "ステージ", description: "ステージevent", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth95-1.webp?height=100&width=100", image2: "/images/booth95-2.webp?height=100&width=100" },
-{ id: 41, position: [20, 0, -2], size: [3, 1.5, 2], name: "群馬産直協議会「めぐるんま」", description: "ハンドメイドスカーフと帽子", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth41-1.webp?height=100&width=100", image2: "/images/booth41-2.webp?height=100&width=100" },
+{ id: 95, position: [15, 0, -2], size: [6, 1.5, 4], name: "ステージ", description: "毎年恒例のステージイベントを開催！〇✕クイズに挑戦して賞品をゲットしよう！", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth95-1.webp?height=100&width=100", image2: "/images/booth95-2.webp?height=100&width=100" },
+{ id: 41, position: [20, 0, -2], size: [3, 1.5, 2], name: "群馬産直協議会「めぐるんま」", description: "群馬産直協議会「めぐるんま」の3産地（野菜くらぶ、くらぶち草の会、利根川生産者グループ）の産直野菜がお手頃価格で購入できるブースです!", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth41-1.webp?height=100&width=100", image2: "/images/booth41-2.webp?height=100&width=100" },
 
 // 右列（4ブース）
 { id: 44, position: [25, 0, -28], size: [2, 1.5, 2], name: "総合案内", description: "「商品展示会2024」に関する案内ブースです。お困りのことやご質問などございましたら、こちらのブースにお越しください。", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth44-1.webp?height=100&width=100", image2: "/images/booth44-2.webp?height=100&width=100" },
-{ id: 43, position: [25, 0, -20], size: [2, 1.5, 2], name: "商品アンテナ倶楽部ブース", description: "商品アンテナ", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth43-1.webp?height=100&width=100", image2: "/images/booth43-2.webp?height=100&width=100" },
-{ id: 42, position: [25, 0, -16], size: [2, 1.5, 2], name: "共済ブース", description: "共済ブース", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth42-1.webp?height=100&width=100", image2: "/images/booth42-2.webp?height=100&width=100" },
+{ id: 43, position: [25, 0, -20], size: [2, 1.5, 2], name: "商品アンテナ倶楽部ブース", description: "商品アンテナ倶楽部ブースでは、メーカーブースツアーを実施します!ご希望の方は、10:45~/13:45~、の時間帯でブースにお越しください！", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth43-1.webp?height=100&width=100", image2: "/images/booth43-2.webp?height=100&width=100" },
+{ id: 42, position: [25, 0, -16], size: [2, 1.5, 2], name: "共済ブース", description: "共済ブースでは、お子さまが「コーすけぬりえ」で遊べます!co-op共済にご興味がある方はぜひブースに遊びに来てね!アンケートもやってるよ♪", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth42-1.webp?height=100&width=100", image2: "/images/booth42-2.webp?height=100&width=100" },
 { id: 96, position: [25, 0, -6], size: [2, 1.5, 2], name: "東毛酪農ブース", description: "パルシステム群馬でもおなじみの「東毛酪農のびん牛乳」が購入できるブースです。いつもよりお得な価格で購入できるのでぜひブースにお越しください！", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth96-1.webp?height=100&width=100", image2: "/images/booth96-2.webp?height=100&width=100" },
-{ id: 39, position: [19, 0, -34], size: [2, 1.5, 2], name: "商品開発チーム", description: "商品開発チーム", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth39-1.webp?height=100&width=100", image2: "/images/booth39-2.webp?height=100&width=100" },
+{ id: 39, position: [19, 0, -34], size: [2, 1.5, 2], name: "商品開発チーム", description: "商品開発チームブースでは、開発協力商品である「地球にやさしい手でつかう洗濯石けん」の紹介や、サンプルの配布、魚つりゲームなどを実施します！ぜひ遊びに来てくださいね！", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth39-1.webp?height=100&width=100", image2: "/images/booth39-2.webp?height=100&width=100" },
 
 // フードドライブ・トイレ・授乳室
-{ id: 45, position: [25, 0, 1], size: [2, 1.5, 2], name: "フードドライブブース", description: "フードドライブ", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth45-1.webp?height=100&width=100", image2: "/images/booth45-2.webp?height=100&width=100" },
+{ id: 45, position: [25, 0, 1], size: [2, 1.5, 2], name: "フードドライブブース", description: "ご持参いただいたフードドライブにご寄付いただく食品などは、こちらのブースでお預かりしております。ご寄付いただいた食品は今後のフードドライブ寄贈式などでフードバンク事業者に寄贈いたします。", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth45-1.webp?height=100&width=100", image2: "/images/booth45-2.webp?height=100&width=100" },
 { id: 46, position: [-20, 0, 1], size: [2, 1.5, 2], name: "授乳室", description: "授乳室です。ご利用ください！", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth96-1.webp?height=100&width=100", image2: "/images/booth96-2.webp?height=100&width=100" },
 { id: 101, position: [-25, 0, 1], size: [7, 1.5, 2], name: "女性用トイレ", description: "女性用トイレです。", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth101-1.webp?height=100&width=100", image2: "/images/booth101-2.webp?height=100&width=100" },
 { id: 102, position: [-12, 0, 1], size: [8, 1.5, 2], name: "男性用トイレ", description: "男性用トイレです。", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth102-1.webp?height=100&width=100", image2: "/images/booth102-2.webp?height=100&width=100" },
@@ -792,7 +792,7 @@ animate()
 {!selectedBooth && (  // モーダルが表示されていない時だけボタンを表示
   <>
     {/* すべてのメーカーブース詳細ボタン */}
-    <a href="https://www.palsystem-gunma.coop/" target="_blank" style={{
+    <a href="https://www.palsystem-gunma.coop/posts/?id=2024expo-makerinfo" target="_blank" style={{
       position: 'absolute',
       bottom: '50px',  // 新しいボタンとの間にスペースを空けるために調整
       right: '10px',
@@ -813,7 +813,7 @@ animate()
     </a>
 
     {/* アンケートボタン */}
-    <a href="https://example.com/survey" target="_blank" style={{
+    <a href="https://forms.gle/PhDiqVmncdAo14rKA" target="_blank" style={{
       position: 'absolute',
       bottom: '10px',
       right: '10px',
