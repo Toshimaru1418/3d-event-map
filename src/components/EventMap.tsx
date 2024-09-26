@@ -6,14 +6,13 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader'
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry'
+import { TextureLoader } from 'three';
 
 function Instructions({ onShowMap }: { onShowMap: () => void }) {
   const [loading, setLoading] = useState(false);
 
   const loadMapResources = async () => {
-    // ここで3Dマップに必要なリソースを非同期で読み込む処理を実装
-    // 例えば、テクスチャやモデルを読み込む
-    await new Promise(resolve => setTimeout(resolve, 2000)); // 擬似的な遅延
+    await new Promise(resolve => setTimeout(resolve, 2000)); 
   };
 
   useEffect(() => {
@@ -46,7 +45,6 @@ function Instructions({ onShowMap }: { onShowMap: () => void }) {
             <li>ブースをクリックすると、各ブースの商品情報が表示されます。</li>
             <li>各ブースの商品情報から、気に入った商品を3種類（各1点）までご注文いただけます。</li>
             <li>ピンチイン・ピンチアウトまたはスクロールで拡大・縮小できます。</li>
-            <li>スマートフォンでの閲覧は、横向きがおすすめです。</li>
             <li>3D表示が重い場合は、ブラウザを再起動してください。</li>
           </ul>
           <button onClick={handleShowMap} className="map-button">
@@ -88,7 +86,7 @@ const booths: Booth[] = [
 
 // 左列（5ブース）
 { id: 13, position: [-27, 0, -28], size: [2, 1.5, 6], name: "㈱スクロール", description: "スクロールは全国の生協様に衣料品・靴、バッグといった服飾雑貨商品を販売しているアパレルメーカーです！当日は普段触れないお洋服の展示はもちろん、親子で楽しめるオリジナルエコバッグ作り体験を実施いたします！", hasLink: true, link: "https://www.scroll-fan.com/", image: "/images/booth13-1.webp?height=100&width=100", image2: "/images/booth13-2.webp?height=100&width=100" },
-{ id: 90, position: [-27, 0, -22], size: [2, 1.5, 3], name: " マトメブクロヒツジを救え!", description: "来場者のみなさんがご持参いただいた「商品まとめ袋」で、マトメブクロヒツジをモコモコにしよう！", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth90-1.webp?height=100&width=100", image2: "/images/booth90-2.webp?height=100&width=100" },
+{ id: 90, position: [-27, 0, -22], size: [2, 1.5, 3], name: "マトメブクロヒツジを救え!", description: "来場者のみなさんがご持参いただいた「商品まとめ袋」で、マトメブクロヒツジをモコモコにしよう！", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth90-1.webp?height=100&width=100", image2: "/images/booth90-2.webp?height=100&width=100" },
 { id: 91, position: [-27, 0, -18], size: [2, 1.5, 3], name: "リサイクル探し", description: "ブースの中に隠れる、リサイクルできるものとできないものを“5つ”探すゲームです。ぜひチャレンジしてみてね!", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth91-1.webp?height=100&width=100", image2: "/images/booth91-2.webp?height=100&width=100" },
 { id: 92, position: [-27, 0, -14], size: [2, 1.5, 3], name: "エコ活ど～れだ", description: "街の風景からエコな活動をしているところを探してみよう！君はいくつ見つけられるかな？", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth92-1.webp?height=100&width=100", image2: "/images/booth92-2.webp?height=100&width=100" },
 { id: 93, position: [-27, 0, -10], size: [2, 1.5, 3], name: "射的 de SDGs", description: "「S」「D」「Gs」の的を狙ってshoot!3つを狙って、SDGsを完成させよう!", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth93-1.webp?height=100&width=100", image2: "/images/booth93-2.webp?height=100&width=100" },
@@ -145,14 +143,19 @@ const booths: Booth[] = [
 { id: 102, position: [-12, 0, 1], size: [8, 1.5, 2], name: "男性用トイレ", description: "男性用トイレです。", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth102-1.webp?height=100&width=100", image2: "/images/booth102-2.webp?height=100&width=100" },
 
 // お仕事ブース
-{ id: 47, position: [30, 0, 17], size: [7, 1.5, 7], name: "お仕事体験ブース", description: "パルシステムのお仕事体験ができるよ！パルシステムの配達員になりきって、パパやママに商品を届けてみよう", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth47-1.webp?height=100&width=100", image2: "/images/booth47-2.webp?height=100&width=100" },
+{ id: 47, position: [30, 0, 17], size: [7, 1.5, 7], name: "お仕事体験コーナー", description: "パルシステムのお仕事体験ができるよ！パルシステムの配達員になりきって、パパやママに商品を届けてみよう", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth47-1.webp?height=100&width=100", image2: "/images/booth47-2.webp?height=100&width=100" },
+
+// ブース詳細を表示するためのオブジェクト
+{ id: 200, position: [0, 0, 17], size: [40, 0.3, 7], name: "マップ詳細はこちら", description: "商品展示会2024 3Dイベントマップの詳細はこちらをチェック!", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/map/eventmap_info.webp?height=100&width=100", image2: "/images/map/eventmap_info-2.webp?height=100&width=100" },
 
 ]
 
 export default function Component() {
   const mountRef = useRef<HTMLDivElement>(null)
-  const [selectedBooth, setSelectedBooth] = useState<Booth | null>(null)
-    // ローディング状態とエラーメッセージのためのステートを追加
+  const [selectedBooth, setSelectedBooth] = useState<Booth | null>(null);
+  const [imageScale, setImageScale] = useState<number>(1.0); // 画像のスケール
+  
+  // ローディング状態とエラーメッセージのためのステートを追加
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showMap, setShowMap] = useState(false)  // マップを表示するかの状態
@@ -161,36 +164,36 @@ export default function Component() {
   useEffect(() => {
     if (!mountRef.current || !showMap) return // showMapがtrueの時だけ3Dマップを初期化
   
-        // テキストを作るための関数を追加
-        function createTextSprite(message) {
-        const canvas = document.createElement('canvas'); // キャンバスを作成
-        const context = canvas.getContext('2d'); // 2D描画用のコンテキストを取得
-  
-        // テキストの設定
-        context.font = '18px Arial';
-        context.fillStyle = 'White'; // テキストの色
-        context.fillText(message, 0, 24); // テキストを描く
-    
-        // キャンバスをテクスチャに変換
-        const texture = new THREE.Texture(canvas);
-        texture.needsUpdate = true; // テクスチャを更新
-    
-        // テキストを表示するためのSpriteMaterialを作成
-        const material = new THREE.SpriteMaterial({ map: texture });
-        const sprite = new THREE.Sprite(material);
-        sprite.scale.set(10, 5, 1); // テキストの大きさを設定
-    
-        return sprite; // テキストのスプライトを返す
-      }
-    
-    // シーンのセットアップ
-    const scene = new THREE.Scene()
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
-    const renderer = new THREE.WebGLRenderer({ antialias: true })
-    renderer.setSize(window.innerWidth, window.innerHeight)
-    renderer.shadowMap.enabled = true
-    mountRef.current.appendChild(renderer.domElement)
+// テキストを作るための関数を追加
+function createTextSprite(message, fontSize = 18, color = 'White') {
+  const canvas = document.createElement('canvas'); // キャンバスを作成
+  const context = canvas.getContext('2d'); // 2D描画用のコンテキストを取得
 
+  // テキストの設定
+  context.font = `${fontSize}px Arial`; // フォントサイズを直接指定
+  context.fillStyle = color; // テキストの色を直接指定
+  context.fillText(message, 0, 24); // テキストを描く
+
+  // キャンバスをテクスチャに変換
+  const texture = new THREE.Texture(canvas);
+  texture.needsUpdate = true; // テクスチャを更新
+
+  // テキストを表示するためのSpriteMaterialを作成
+  const material = new THREE.SpriteMaterial({ map: texture });
+  const sprite = new THREE.Sprite(material);
+  sprite.scale.set(10, 5, 1); // テキストの大きさを設定
+
+  return sprite; // テキストのスプライトを返す
+}
+
+        // シーンのセットアップ
+       const scene = new THREE.Scene()
+       const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
+       const renderer = new THREE.WebGLRenderer({ antialias: true })
+       renderer.setSize(window.innerWidth, window.innerHeight)
+       renderer.shadowMap.enabled = true
+       mountRef.current.appendChild(renderer.domElement)
+    
     // Environment map
     const loader = new THREE.TextureLoader()
     const texture = loader.load('images/map/background_new.webp', () => {
@@ -215,7 +218,7 @@ export default function Component() {
     spotLight.castShadow = true;
     scene.add(spotLight);
     
-      // ターゲットオブジェクトを作成してターゲットを設定
+    // ターゲットオブジェクトを作成してターゲットを設定
     const spotLight2 = new THREE.SpotLight(0xffffff, 7.0); // 強度を上げる
     spotLight2.position.set(-30, 11, 1); // スポットライトの位置
       
@@ -353,6 +356,7 @@ export default function Component() {
       console.log(`Failed to load ${url}`);
       setError(`Failed to load ${url}`);  // ここでエラーが出ているか確認
     };
+
    // GLBモデルのロードと配置
     const gltfLoader = new GLTFLoader(loadingManager)
     gltfLoader.load("/images/glb/konsenkun.glb",  // パスが正しいか確認
@@ -431,37 +435,56 @@ export default function Component() {
     }); 
     const boothObjects: THREE.Mesh[] = [];
 
+    // boothsをループする
     booths.forEach((booth) => {
-      const boothGeometry = new THREE.BoxGeometry(booth.size[0], booth.size[1], booth.size[2])
-      let boothMaterial = defaultBoothMaterial
+      const boothGeometry = new THREE.BoxGeometry(booth.size[0], booth.size[1], booth.size[2]);
+    
+      // デフォルトのブースマテリアルを設定
+      let boothMaterial = defaultBoothMaterial;
       if ([97, 90, 91, 92, 93, 94].includes(booth.id)) {
         boothMaterial = pinkBoothMaterial;
       } else if ([6, 13, 39, 40, 41, 42, 43, 44, 45, 46, 47, 96].includes(booth.id)) {
         boothMaterial = lightblueBoothMaterial;
       } else if ([1, 2, 10, 27].includes(booth.id)) {
         boothMaterial = greenBoothMaterial;
-      } else if (booth.id === 95) {
+      } else if ([95, 200].includes(booth.id)) {
         boothMaterial = stageBoothMaterial; 
       } else if (booth.id === 101) {
         boothMaterial = redBoothMaterial;
       } else if (booth.id === 102) {
         boothMaterial = blueBoothMaterial;
       }
+    
+      // ブースメッシュを作成
+      const boothMesh = new THREE.Mesh(boothGeometry, boothMaterial);
+      boothMesh.position.set(...booth.position);
+      boothMesh.castShadow = true;
+      boothMesh.receiveShadow = true;
+      boothMesh.userData = { id: booth.id };
+    
       
-      const boothMesh = new THREE.Mesh(boothGeometry, boothMaterial)
-      boothMesh.position.set(...booth.position)
-      boothMesh.castShadow = true
-      boothMesh.receiveShadow = true
-      boothMesh.userData = { id: booth.id }
-      scene.add(boothMesh)
-      boothObjects.push(boothMesh)
+      // idが200のブースには特別な処理をせず、通常のマテリアルを適用
+      if (booth.id === 200) {
+      // 通常のブースメッシュを追加
+       scene.add(boothMesh);
+       boothObjects.push(boothMesh);
+       } else {
+      // idが200でないブースは通常のブースメッシュを追加
+      scene.add(boothMesh);
+      boothObjects.push(boothMesh);
+      }
     
-      // ここにテキストスプライトを追加します
-      const textSprite = createTextSprite(booth.name) // ブース名をテキストとして作成
-      textSprite.position.set(booth.position[0], booth.position[1] + booth.size[1] + 2, booth.position[2]) // ブースの上に配置
-      scene.add(textSprite) // シーンにテキストスプライトを追加
-    })
+// ここにテキストスプライトを追加します
+const textSprite = createTextSprite(
+  booth.name, // ブース名
+  booth.id === 200 ? 33 : 18, // idが200の場合はフォントサイズ24、それ以外は18
+  booth.id === 200 ? 'red' : 'White' // idが200の場合は色を赤、それ以外は白
+);
+textSprite.position.set(booth.position[0], booth.position[1] + booth.size[1] + 2, booth.position[2]); // ブースの上に配置
+scene.add(textSprite); // シーンにテキストスプライトを追加
+    });
     
+
     // 壁を追加
     const wallMaterial = new THREE.MeshPhongMaterial({ color: 0xCCCCCC, transparent: true, opacity: 0.5 })
     const wallHeight = 3
@@ -530,21 +553,6 @@ export default function Component() {
     const westWall = new THREE.Mesh(westWallGeometry, wallMaterial)
     westWall.position.set(-30, wallHeight / 2, -18)
     scene.add(westWall)
-
-//上空にテキストを追加
-const fontLoader = new FontLoader()
-fontLoader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json', (font) => {
-  const textGeometry = new TextGeometry('Welcome to Product Exhibition 2024', {
-    font: font,
-    size: 2,
-    depth: 0.5,
-  
-  })
-  const textMaterial = new THREE.MeshPhongMaterial({ color: 0xFFFF00 })
-  const textMesh = new THREE.Mesh(textGeometry, textMaterial)
-  textMesh.position.set(-20, 10, -40) // 上空に配置
-  scene.add(textMesh)
-})
 
     // 矢印を追加
     // 通常の矢印を作成する関数
@@ -720,25 +728,11 @@ arrowPositions.forEach((arrow) => {
       scene.add(verticalWall)
     }
 
-    // 南壁の下に画像を追加
-    const imageLoader = new THREE.TextureLoader();
-    imageLoader.load('/images/map/eventmap_info.webp?v=' + Date.now(), (texture) => {
-      const imageAspect = texture.image.width / texture.image.height;
-      const scaleFactor = 1.4;  // 拡大倍率
-      const planeWidth = 40 * scaleFactor;  // 幅を2倍に
-      const planeHeight = planeWidth / imageAspect;  // アスペクト比を維持しつつ高さも調整
-      const planeGeometry = new THREE.PlaneGeometry(planeWidth, planeHeight);
-      const planeMaterial = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide });
-      const imagePlane = new THREE.Mesh(planeGeometry, planeMaterial);
-      imagePlane.rotation.x = -Math.PI / 2;
-      imagePlane.position.set(-3, 0.01, 27);
-      scene.add(imagePlane);
-    });
     // ロゴのテクスチャをロード
     const textureLoader = new THREE.TextureLoader();
     const logoTexture = textureLoader.load("/images/map/logo1.png");
 
-    // ロゴのジオメトリを作成
+      // ロゴのジオメトリを作成
     const aspect = 300 / 115; // 画像のアスペクト比
     const scale = 10; // スケールファクター
     const geometry = new THREE.PlaneGeometry(scale * aspect, scale);
@@ -747,8 +741,44 @@ arrowPositions.forEach((arrow) => {
     logo.position.set(-40, 10, -40); // ロゴの位置を調整
     scene.add(logo);
 
+    // ブースを作成する関数
+  function createBooth(booth: Booth) {
+    const geometry = new THREE.BoxGeometry(booth.size[0], booth.size[1], booth.size[2])
+    const materials = [
+      new THREE.MeshPhongMaterial({ color: 0xFF9900 }), // 右
+      new THREE.MeshPhongMaterial({ color: 0xFF9900 }), // 左
+      new THREE.MeshPhongMaterial({ color: 0xFF9900 }), // 上
+      new THREE.MeshPhongMaterial({ color: 0xFF9900 }), // 下
+      new THREE.MeshPhongMaterial({ color: 0xFF9900 }), // 前
+      new THREE.MeshPhongMaterial({ color: 0xFF9900 })  // 後
+    ]
+
+    const mesh = new THREE.Mesh(geometry, materials)
+    mesh.position.set(...booth.position)
+    mesh.castShadow = true
+    mesh.receiveShadow = true
+    mesh.userData = { id: booth.id }
+
+    if (booth.id === 200) {
+      // id:200のブースの天面に画像を適用
+      textureLoader.load('/images/map/eventmap_info.webp', 
+        (texture) => {
+          materials[2] = new THREE.MeshPhongMaterial({ map: texture })
+          mesh.material = materials
+        },
+        undefined,
+        (err) => {
+          console.error('テクスチャのロードに失敗しました', err)
+        }
+      )
+    }
+
+    return mesh
+  }
+
+
     // カメラの位置
-    camera.position.set(0, 30, 55)
+    camera.position.set(0, 25, 35)
     camera.lookAt(0, 0, 0)
 
     // コントロール
@@ -762,22 +792,25 @@ arrowPositions.forEach((arrow) => {
     const mouse = new THREE.Vector2()
 
     function onMouseClick(event: MouseEvent) {
-      mouse.x = (event.clientX / window.innerWidth) * 2 - 1
-      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1
-
-      raycaster.setFromCamera(mouse, camera)
-      const intersects = raycaster.intersectObjects(boothObjects)
-
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    
+      raycaster.setFromCamera(mouse, camera);
+      const intersects = raycaster.intersectObjects(boothObjects);
+    
       if (intersects.length > 0) {
-        const selectedBoothId = intersects[0].object.userData.id
-        const booth = booths.find(b => b.id === selectedBoothId)
+        const selectedBoothId = intersects[0].object.userData.id;
+        const booth = booths.find(b => b.id === selectedBoothId);
         if (booth) {
-          setSelectedBooth(booth)
+          setSelectedBooth(booth);
+          setImageScale(1.5); // 大きく表示するサイズ
         }
       } else {
-        setSelectedBooth(null)
+        setSelectedBooth(null);
+        setImageScale(1.0); // 通常サイズに戻す
       }
     }
+    
 
     window.addEventListener('click', onMouseClick)
 
@@ -815,106 +848,153 @@ animate()
     return (
       <div>
         {!showMap ? (
-          <Instructions onShowMap={() => setShowMap(true)} />  // showMapがfalseならInstructionsを表示
+          <Instructions onShowMap={() => setShowMap(true)} /> // showMapがfalseならInstructionsを表示
         ) : (
           <div style={{ position: 'relative', width: '100%', height: '100vh' }}>
             <div ref={mountRef} style={{ width: '100%', height: '100%' }} />
-  
+      
             {isLoading && <p>マップを読み込んでいます...</p>}
             {error && <p>エラー: {error}</p>}
-  
+      
             {selectedBooth && (
-              <div style={{
-                position: 'absolute',
-                top: '16px',
-                left: '14px',
-                background: 'white',
-                padding: '10px',
-                borderRadius: '5px',
-                boxShadow: '0 0 10px rgba(0,0,0,0.1)',
-                maxWidth: '240px'
-              }}>
-                <img src={selectedBooth.image} alt={selectedBooth.name} style={{ width: '100%', height: 'auto', marginBottom: '10px' }} />
-                <img src={selectedBooth.image2} alt={`${selectedBooth.name} - 追加画像`} style={{ width: '100%', height: 'auto', marginBottom: '10px' }} />
-                <h3>{selectedBooth.name}</h3>
-                <p>{selectedBooth.description}</p>
-  
-                {selectedBooth.hasLink && (
-                  <a href={selectedBooth.link} target="_blank" rel="noopener noreferrer">
-                    注文する
-                  </a>
-                )}
-              </div>
-            )}
-  
-            {/* リンクボタン */}
-            {!selectedBooth && (
-              <>
-                <a href="https://www.palsystem-gunma.coop/posts/?id=2024expo-makerinfo" target="_blank" style={{
-                  position: 'absolute',
-                  bottom: '80px',
-                  right: '10px',
-                  padding: '6px 12px',
-                  backgroundColor: '#FF69B4',
-                  color: 'white',
-                  textDecoration: 'none',
-                  borderRadius: '15px',
-                  fontSize: '12px',
-                  textAlign: 'center',
-                  boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-                  transition: 'transform 0.2s ease-in-out',
-                  zIndex: 5,
-                }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-                  onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-                >
-                  すべてのメーカーブース詳細はこちら
-                </a>
-  
-                <a href="https://forms.gle/PhDiqVmncdAo14rKA" target="_blank" style={{
-                  position: 'absolute',
-                  bottom: '45px',
-                  right: '10px',
-                  padding: '6px 12px',
-                  backgroundColor: '#32CD32',
-                  color: 'white',
-                  textDecoration: 'none',
-                  borderRadius: '15px',
-                  fontSize: '12px',
-                  textAlign: 'center',
-                  boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-                  transition: 'transform 0.2s ease-in-out',
-                  zIndex: 5,
-                }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-                  onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-                >
-                  商品展示会アンケートはこちらから
-                </a>
+  <div style={{
+    position: 'absolute',
+    top: '16px',
+    left: '14px',
+    background: 'white',
+    padding: '10px',
+    borderRadius: '5px',
+    boxShadow: '0 0 10px rgba(0,0,0,0.1)',
+    maxWidth: selectedBooth.id === 200 ? '600px' : '240px', // id:200なら幅を広く
+    zIndex: 10,  // モーダルを前面に
+  }}>
+    <img src={selectedBooth.image} alt={selectedBooth.name} style={{ width: '100%', height: 'auto', marginBottom: '10px' }} />
+    <img src={selectedBooth.image2} alt={`${selectedBooth.name} - 追加画像`} style={{ width: '100%', height: 'auto', marginBottom: '10px' }} />
+    <h3>{selectedBooth.name}</h3>
+    <p>{selectedBooth.description}</p>
 
-                <a href="https://forms.gle/h5DLVLqZLLykifCJ8" target="_blank" style={{
-                  position: 'absolute',
-                  bottom: '10px',
-                  right: '10px',
-                  padding: '6px 12px',
-                  backgroundColor: '#ff4d4d',
-                  color: 'white',
-                  textDecoration: 'none',
-                  borderRadius: '15px',
-                  fontSize: '12px',
-                  textAlign: 'center',
-                  boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-                  transition: 'transform 0.2s ease-in-out',
-                  zIndex: 5,
-                }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-                  onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-                >
-                  商品の注文はこちらからもできます！
-                </a>
-              </>
-            )}
+    {/* リンクが必要な場合のみリンクを表示 */}
+    {selectedBooth.hasLink && (
+      <a href={selectedBooth.link} target="_blank" rel="noopener noreferrer" style={{
+        display: 'inline-block',
+        padding: '8px 16px',
+        backgroundColor: '#ff6f61',
+        color: 'white',
+        borderRadius: '5px',
+        textDecoration: 'none',
+        marginTop: '10px',
+      }}>
+        注文する
+      </a>
+    )}
+  </div>
+      )}
+      
+            {/* リンクボタン */}
+            {selectedBooth && (
+  <div style={{
+    position: 'absolute',
+    top: '16px',
+    left: '14px',
+    background: 'white',
+    padding: '10px',
+    borderRadius: '5px',
+    boxShadow: '0 0 10px rgba(0,0,0,0.1)',
+    maxWidth: selectedBooth.id === 200 ? '600px' : '240px', // Adjusted width based on booth id
+    zIndex: 10,
+  }}>
+    <img src={selectedBooth.image} alt={selectedBooth.name} style={{ width: '100%', height: 'auto', marginBottom: '10px' }} />
+    <img src={selectedBooth.image2} alt={`${selectedBooth.name} - 追加画像`} style={{ width: '100%', height: 'auto', marginBottom: '10px' }} />
+    <h3>{selectedBooth.name}</h3>
+    <p>{selectedBooth.description}</p>
+
+    {selectedBooth.hasLink && (
+      <a href={selectedBooth.link} target="_blank" rel="noopener noreferrer" style={{
+        display: 'inline-block',
+        padding: '8px 16px',
+        backgroundColor: '#ff6f61',
+        color: 'white',
+        borderRadius: '5px',
+        textDecoration: 'none',
+        marginTop: '10px',
+      }}>
+        注文する
+      </a>
+    )}
+  </div>
+)}
+
+{/* リンクボタンの設置 */}
+{!selectedBooth && (
+  <>
+    <a href="https://www.palsystem-gunma.coop/posts/?id=2024expo-makerinfo" target="_blank" style={{
+      position: 'absolute',
+      bottom: '80px',
+      right: '10px',
+      padding: '6px 12px',
+      backgroundColor: '#FF69B4',
+      color: 'white',
+      textDecoration: 'none',
+      borderRadius: '15px',
+      fontSize: '12px',
+      textAlign: 'center',
+      boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+      transition: 'transform 0.2s ease-in-out',
+      zIndex: 20,
+    }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+      onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+    >
+      すべてのメーカーブース詳細はこちら
+    </a>
+
+    <a href="https://forms.gle/PhDiqVmncdAo14rKA" target="_blank" style={{
+      position: 'absolute',
+      bottom: '45px',
+      right: '10px',
+      padding: '6px 12px',
+      backgroundColor: '#32CD32',
+      color: 'white',
+      textDecoration: 'none',
+      borderRadius: '15px',
+      fontSize: '12px',
+      textAlign: 'center',
+      boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+      transition: 'transform 0.2s ease-in-out',
+      zIndex: 20,
+    }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+      onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+    >
+      商品展示会アンケートはこちらから
+    </a>
+
+    <a href="https://forms.gle/h5DLVLqZLLykifCJ8" target="_blank" style={{
+      position: 'absolute',
+      bottom: '10px',
+      right: '10px',
+      padding: '6px 12px',
+      backgroundColor: '#ff4d4d',
+      color: 'white',
+      textDecoration: 'none',
+      borderRadius: '15px',
+      fontSize: '12px',
+      textAlign: 'center',
+      boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+      transition: 'transform 0.2s ease-in-out',
+      zIndex: 20,
+    }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+      onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+    >
+      商品の注文はこちらからもできます！
+    </a>
+  </>
+)}
           </div>
         )}
       </div>
     );
+    
+    
+    
   }
   
 function setIsLoading(arg0: boolean) {
