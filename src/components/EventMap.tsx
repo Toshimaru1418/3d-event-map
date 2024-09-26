@@ -7,6 +7,33 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader'
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry'
 
+function Instructions({ onShowMap }: { onShowMap: () => void }) {
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-300 p-4">
+      <div className="bg-white bg-opacity-90 p-8 rounded-3xl shadow-lg max-w-2xl transform transition duration-300 ease-in-out hover:scale-105 hover:shadow-2xl">
+        <h1 className="text-4xl font-extrabold mb-4 text-center text-pink-600 tracking-wide">
+          マップ利用の注意事項
+        </h1>
+        <ul className="list-disc pl-5 mb-6 space-y-3 text-lg text-gray-800">
+          <li>このマップは3D表示です。ドラッグして視点を変更できます。</li>
+          <li>各ブースをクリックすると、ブースの商品情報が表示されます。</li>
+          <li>各ブースの商品情報から、気に入った商品を3種類（各1点）までご注文いただけます。</li>
+          <li>ピンチイン・ピンチアウトで拡大・縮小できます。</li>
+          <li>スマートフォンでの閲覧は、横向きがおすすめです。</li>
+          <li>3D表示が重い場合は、ブラウザを再起動してください。</li>
+        </ul>
+        <button 
+          onClick={onShowMap}
+          className="map-button" 
+        >
+          マップへGO
+        </button>
+      </div>
+    </div>
+  );
+}
+
+
 interface Booth {
   id: number;
   position: [number, number, number];
@@ -103,15 +130,17 @@ export default function Component() {
     // ローディング状態とエラーメッセージのためのステートを追加
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showMap, setShowMap] = useState(false)  // マップを表示するかの状態
+
 
   useEffect(() => {
-    if (!mountRef.current) return
+    if (!mountRef.current || !showMap) return // showMapがtrueの時だけ3Dマップを初期化
   
         // テキストを作るための関数を追加
         function createTextSprite(message) {
         const canvas = document.createElement('canvas'); // キャンバスを作成
         const context = canvas.getContext('2d'); // 2D描画用のコンテキストを取得
-    
+  
         // テキストの設定
         context.font = '18px Arial';
         context.fillStyle = 'White'; // テキストの色
@@ -749,96 +778,120 @@ animate()
     }
     window.addEventListener('resize', onWindowResize)
 
-    // クリーンアップ
-    return () => {
-      window.removeEventListener('click', onMouseClick)
-      window.removeEventListener('resize', onWindowResize)
-      if (mountRef.current) {
-        mountRef.current.removeChild(renderer.domElement)
-      }
-    }
-  }, [])
-
-  return (
-    <div style={{ position: 'relative', width: '100%', height: '100vh' }}>
-      <div ref={mountRef} style={{ width: '100%', height: '100%' }} />
-
-      {selectedBooth && (
-  <div style={{
-    position: 'absolute',
-    top: '16px',
-    left: '14px',
-    background: 'white',
-    padding: '10px',
-    borderRadius: '5px',
-    boxShadow: '0 0 10px rgba(0,0,0,0.1)',
-    maxWidth: '240px'
-  }}>
-    <img src={selectedBooth.image} alt={selectedBooth.name} style={{ width: '100%', height: 'auto', marginBottom: '10px' }} />
-    <img src={selectedBooth.image2} alt={`${selectedBooth.name} - 追加画像`} style={{ width: '100%', height: 'auto', marginBottom: '10px' }} />
-    <h3>{selectedBooth.name}</h3>
-    <p>{selectedBooth.description}</p>
-
-    {/* リンクが必要な場合のみリンクを表示 */}
-    {selectedBooth.hasLink && (
-      <a href={selectedBooth.link} target="_blank" rel="noopener noreferrer">
-        注文する
-      </a>
-    )}
-  </div>
-)}
-
-{/* ここにリンクボタンを追加 */}
-{!selectedBooth && (  // モーダルが表示されていない時だけボタンを表示
-  <>
-    {/* すべてのメーカーブース詳細ボタン */}
-    <a href="https://www.palsystem-gunma.coop/posts/?id=2024expo-makerinfo" target="_blank" style={{
-      position: 'absolute',
-      bottom: '50px',  // 新しいボタンとの間にスペースを空けるために調整
-      right: '10px',
-      padding: '6px 12px',
-      backgroundColor: '#FF69B4',
-      color: 'white',
-      textDecoration: 'none',
-      borderRadius: '15px',
-      fontSize: '12px',
-      textAlign: 'center',
-      boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-      transition: 'transform 0.2s ease-in-out',
-      zIndex: 5,  // モーダルより下に表示
-    }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-      onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-    >
-      すべてのメーカーブース詳細はこちら
-    </a>
-
-    {/* アンケートボタン */}
-    <a href="https://forms.gle/PhDiqVmncdAo14rKA" target="_blank" style={{
-      position: 'absolute',
-      bottom: '10px',
-      right: '10px',
-      padding: '6px 12px',
-      backgroundColor: '#32CD32',  // 違う色（ライムグリーン）で区別
-      color: 'white',
-      textDecoration: 'none',
-      borderRadius: '15px',
-      fontSize: '12px',
-      textAlign: 'center',
-      boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-      transition: 'transform 0.2s ease-in-out',
-      zIndex: 5,  // モーダルより下に表示
-    }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-      onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-    >
-      商品展示会アンケートはこちらから
-    </a>
-  </>
-)}
-   </div>
-  )
+    
+       // クリーンアップ関数
+       return () => {
+        if (mountRef.current) {
+          mountRef.current.removeChild(renderer.domElement);
+        }
+      };
+    }, [showMap]);
   
-}
+    return (
+      <div>
+        {!showMap ? (
+          <Instructions onShowMap={() => setShowMap(true)} />  // showMapがfalseならInstructionsを表示
+        ) : (
+          <div style={{ position: 'relative', width: '100%', height: '100vh' }}>
+            <div ref={mountRef} style={{ width: '100%', height: '100%' }} />
+  
+            {isLoading && <p>マップを読み込んでいます...</p>}
+            {error && <p>エラー: {error}</p>}
+  
+            {selectedBooth && (
+              <div style={{
+                position: 'absolute',
+                top: '16px',
+                left: '14px',
+                background: 'white',
+                padding: '10px',
+                borderRadius: '5px',
+                boxShadow: '0 0 10px rgba(0,0,0,0.1)',
+                maxWidth: '240px'
+              }}>
+                <img src={selectedBooth.image} alt={selectedBooth.name} style={{ width: '100%', height: 'auto', marginBottom: '10px' }} />
+                <img src={selectedBooth.image2} alt={`${selectedBooth.name} - 追加画像`} style={{ width: '100%', height: 'auto', marginBottom: '10px' }} />
+                <h3>{selectedBooth.name}</h3>
+                <p>{selectedBooth.description}</p>
+  
+                {selectedBooth.hasLink && (
+                  <a href={selectedBooth.link} target="_blank" rel="noopener noreferrer">
+                    注文する
+                  </a>
+                )}
+              </div>
+            )}
+  
+            {/* リンクボタン */}
+            {!selectedBooth && (
+              <>
+                <a href="https://www.palsystem-gunma.coop/posts/?id=2024expo-makerinfo" target="_blank" style={{
+                  position: 'absolute',
+                  bottom: '80px',
+                  right: '10px',
+                  padding: '6px 12px',
+                  backgroundColor: '#FF69B4',
+                  color: 'white',
+                  textDecoration: 'none',
+                  borderRadius: '15px',
+                  fontSize: '12px',
+                  textAlign: 'center',
+                  boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                  transition: 'transform 0.2s ease-in-out',
+                  zIndex: 5,
+                }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                >
+                  すべてのメーカーブース詳細はこちら
+                </a>
+  
+                <a href="https://forms.gle/PhDiqVmncdAo14rKA" target="_blank" style={{
+                  position: 'absolute',
+                  bottom: '45px',
+                  right: '10px',
+                  padding: '6px 12px',
+                  backgroundColor: '#32CD32',
+                  color: 'white',
+                  textDecoration: 'none',
+                  borderRadius: '15px',
+                  fontSize: '12px',
+                  textAlign: 'center',
+                  boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                  transition: 'transform 0.2s ease-in-out',
+                  zIndex: 5,
+                }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                >
+                  商品展示会アンケートはこちらから
+                </a>
 
+                <a href="https://forms.gle/h5DLVLqZLLykifCJ8" target="_blank" style={{
+                  position: 'absolute',
+                  bottom: '10px',
+                  right: '10px',
+                  padding: '6px 12px',
+                  backgroundColor: '#ff4d4d',
+                  color: 'white',
+                  textDecoration: 'none',
+                  borderRadius: '15px',
+                  fontSize: '12px',
+                  textAlign: 'center',
+                  boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                  transition: 'transform 0.2s ease-in-out',
+                  zIndex: 5,
+                }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                >
+                  商品の注文はこちらからもできます！
+                </a>
+              </>
+            )}
+          </div>
+        )}
+      </div>
+    );
+  }
+  
 function setIsLoading(arg0: boolean) {
   throw new Error('Function not implemented.');
 }
