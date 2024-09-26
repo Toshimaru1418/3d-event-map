@@ -8,27 +8,52 @@ import { FontLoader } from 'three/examples/jsm/loaders/FontLoader'
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry'
 
 function Instructions({ onShowMap }: { onShowMap: () => void }) {
+  const [loading, setLoading] = useState(false);
+
+  const loadMapResources = async () => {
+    // ここで3Dマップに必要なリソースを非同期で読み込む処理を実装
+    // 例えば、テクスチャやモデルを読み込む
+    await new Promise(resolve => setTimeout(resolve, 2000)); // 擬似的な遅延
+  };
+
+  useEffect(() => {
+    loadMapResources(); // コンポーネントマウント時にリソースを読み込む
+  }, []);
+
+  const handleShowMap = () => {
+    setLoading(true);
+    // マップが準備完了になるまで待つ処理
+    setTimeout(() => {
+      onShowMap(); // 3Dマップを表示
+      setLoading(false); // ローディングが完了したらfalseに
+    }, 3000); // 3秒の遅延（必要に応じて調整）
+  };
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-300 p-4">
-      <div className="bg-white bg-opacity-90 p-8 rounded-3xl shadow-lg max-w-2xl transform transition duration-300 ease-in-out hover:scale-105 hover:shadow-2xl">
-        <h1 className="text-4xl font-extrabold mb-4 text-center text-pink-600 tracking-wide">
-          マップ利用の注意事項
-        </h1>
-        <ul className="list-disc pl-5 mb-6 space-y-3 text-lg text-gray-800">
-          <li>このマップは3D表示です。ドラッグして視点を変更できます。</li>
-          <li>各ブースをクリックすると、ブースの商品情報が表示されます。</li>
-          <li>各ブースの商品情報から、気に入った商品を3種類（各1点）までご注文いただけます。</li>
-          <li>ピンチイン・ピンチアウトで拡大・縮小できます。</li>
-          <li>スマートフォンでの閲覧は、横向きがおすすめです。</li>
-          <li>3D表示が重い場合は、ブラウザを再起動してください。</li>
-        </ul>
-        <button 
-          onClick={onShowMap}
-          className="map-button" 
-        >
-          マップへGO
-        </button>
-      </div>
+    <div className="flex flex-col items-center justify-center min-h-screen">
+      {loading ? (
+        <div className="loading-indicator">
+          <p>マップを読み込み中...</p>
+          {/* ローディングスピナーやアニメーションを追加 */}
+        </div>
+      ) : (
+        <div className="bg-white bg-opacity-80 p-8 rounded-2xl shadow-lg max-w-2xl">
+          <h1 className="text-3xl font-extrabold mb-4 text-center text-gray-900 tracking-wide">
+            マップ利用の注意事項
+          </h1>
+          <ul className="list-disc pl-5 mb-6 space-y-3 text-lg text-gray-700">
+            <li>このマップは3D表示です。ドラッグして視点を変更できます。</li>
+            <li>ブースをクリックすると、各ブースの商品情報が表示されます。</li>
+            <li>各ブースの商品情報から、気に入った商品を3種類（各1点）までご注文いただけます。</li>
+            <li>ピンチイン・ピンチアウトまたはスクロールで拡大・縮小できます。</li>
+            <li>スマートフォンでの閲覧は、横向きがおすすめです。</li>
+            <li>3D表示が重い場合は、ブラウザを再起動してください。</li>
+          </ul>
+          <button onClick={handleShowMap} className="map-button">
+            マップへGO
+          </button>
+        </div>
+      )}
     </div>
   );
 }
@@ -63,7 +88,7 @@ const booths: Booth[] = [
 
 // 左列（5ブース）
 { id: 13, position: [-27, 0, -28], size: [2, 1.5, 6], name: "㈱スクロール", description: "スクロールは全国の生協様に衣料品・靴、バッグといった服飾雑貨商品を販売しているアパレルメーカーです！当日は普段触れないお洋服の展示はもちろん、親子で楽しめるオリジナルエコバッグ作り体験を実施いたします！", hasLink: true, link: "https://www.scroll-fan.com/", image: "/images/booth13-1.webp?height=100&width=100", image2: "/images/booth13-2.webp?height=100&width=100" },
-{ id: 90, position: [-27, 0, -22], size: [2, 1.5, 3], name: " マトメブクロヒツジを救え!", description: "来場者のみなさんがご持参いただいた「商品まとめ袋」の総重量を予想しよう!予想が的中したあなたには景品を後日プレゼント!", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth90-1.webp?height=100&width=100", image2: "/images/booth90-2.webp?height=100&width=100" },
+{ id: 90, position: [-27, 0, -22], size: [2, 1.5, 3], name: " マトメブクロヒツジを救え!", description: "来場者のみなさんがご持参いただいた「商品まとめ袋」で、マトメブクロヒツジをモコモコにしよう！", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth90-1.webp?height=100&width=100", image2: "/images/booth90-2.webp?height=100&width=100" },
 { id: 91, position: [-27, 0, -18], size: [2, 1.5, 3], name: "リサイクル探し", description: "ブースの中に隠れる、リサイクルできるものとできないものを“5つ”探すゲームです。ぜひチャレンジしてみてね!", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth91-1.webp?height=100&width=100", image2: "/images/booth91-2.webp?height=100&width=100" },
 { id: 92, position: [-27, 0, -14], size: [2, 1.5, 3], name: "エコ活ど～れだ", description: "街の風景からエコな活動をしているところを探してみよう！君はいくつ見つけられるかな？", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth92-1.webp?height=100&width=100", image2: "/images/booth92-2.webp?height=100&width=100" },
 { id: 93, position: [-27, 0, -10], size: [2, 1.5, 3], name: "射的 de SDGs", description: "「S」「D」「Gs」の的を狙ってshoot!3つを狙って、SDGsを完成させよう!", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth93-1.webp?height=100&width=100", image2: "/images/booth93-2.webp?height=100&width=100" },
@@ -168,7 +193,7 @@ export default function Component() {
 
     // Environment map
     const loader = new THREE.TextureLoader()
-    const texture = loader.load('images/map/background_new.png', () => {
+    const texture = loader.load('images/map/background_new.webp', () => {
       const rt = new THREE.WebGLCubeRenderTarget(texture.image.height)
       rt.fromEquirectangularTexture(renderer, texture)
       scene.background = rt.texture
@@ -697,7 +722,7 @@ arrowPositions.forEach((arrow) => {
 
     // 南壁の下に画像を追加
     const imageLoader = new THREE.TextureLoader();
-    imageLoader.load('/images/map/eventmap_info.jpg?v=' + Date.now(), (texture) => {
+    imageLoader.load('/images/map/eventmap_info.webp?v=' + Date.now(), (texture) => {
       const imageAspect = texture.image.width / texture.image.height;
       const scaleFactor = 1.4;  // 拡大倍率
       const planeWidth = 40 * scaleFactor;  // 幅を2倍に

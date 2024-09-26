@@ -7,7 +7,24 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader';
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry';
 function Instructions({ onShowMap }) {
-    return (_jsx("div", { className: "flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-300 p-4", children: _jsxs("div", { className: "bg-white bg-opacity-90 p-8 rounded-3xl shadow-lg max-w-2xl transform transition duration-300 ease-in-out hover:scale-105 hover:shadow-2xl", children: [_jsx("h1", { className: "text-4xl font-extrabold mb-4 text-center text-pink-600 tracking-wide", children: "\u30DE\u30C3\u30D7\u5229\u7528\u306E\u6CE8\u610F\u4E8B\u9805" }), _jsxs("ul", { className: "list-disc pl-5 mb-6 space-y-3 text-lg text-gray-800", children: [_jsx("li", { children: "\u3053\u306E\u30DE\u30C3\u30D7\u306F3D\u8868\u793A\u3067\u3059\u3002\u30C9\u30E9\u30C3\u30B0\u3057\u3066\u8996\u70B9\u3092\u5909\u66F4\u3067\u304D\u307E\u3059\u3002" }), _jsx("li", { children: "\u5404\u30D6\u30FC\u30B9\u3092\u30AF\u30EA\u30C3\u30AF\u3059\u308B\u3068\u3001\u30D6\u30FC\u30B9\u306E\u5546\u54C1\u60C5\u5831\u304C\u8868\u793A\u3055\u308C\u307E\u3059\u3002" }), _jsx("li", { children: "\u5404\u30D6\u30FC\u30B9\u306E\u5546\u54C1\u60C5\u5831\u304B\u3089\u3001\u6C17\u306B\u5165\u3063\u305F\u5546\u54C1\u30923\u7A2E\u985E\uFF08\u54041\u70B9\uFF09\u307E\u3067\u3054\u6CE8\u6587\u3044\u305F\u3060\u3051\u307E\u3059\u3002" }), _jsx("li", { children: "\u30D4\u30F3\u30C1\u30A4\u30F3\u30FB\u30D4\u30F3\u30C1\u30A2\u30A6\u30C8\u3067\u62E1\u5927\u30FB\u7E2E\u5C0F\u3067\u304D\u307E\u3059\u3002" }), _jsx("li", { children: "\u30B9\u30DE\u30FC\u30C8\u30D5\u30A9\u30F3\u3067\u306E\u95B2\u89A7\u306F\u3001\u6A2A\u5411\u304D\u304C\u304A\u3059\u3059\u3081\u3067\u3059\u3002" }), _jsx("li", { children: "3D\u8868\u793A\u304C\u91CD\u3044\u5834\u5408\u306F\u3001\u30D6\u30E9\u30A6\u30B6\u3092\u518D\u8D77\u52D5\u3057\u3066\u304F\u3060\u3055\u3044\u3002" })] }), _jsx("button", { onClick: onShowMap, className: "map-button", children: "\u30DE\u30C3\u30D7\u3078GO" })] }) }));
+    const [loading, setLoading] = useState(false);
+    const loadMapResources = async () => {
+        // ここで3Dマップに必要なリソースを非同期で読み込む処理を実装
+        // 例えば、テクスチャやモデルを読み込む
+        await new Promise(resolve => setTimeout(resolve, 2000)); // 擬似的な遅延
+    };
+    useEffect(() => {
+        loadMapResources(); // コンポーネントマウント時にリソースを読み込む
+    }, []);
+    const handleShowMap = () => {
+        setLoading(true);
+        // マップが準備完了になるまで待つ処理
+        setTimeout(() => {
+            onShowMap(); // 3Dマップを表示
+            setLoading(false); // ローディングが完了したらfalseに
+        }, 3000); // 3秒の遅延（必要に応じて調整）
+    };
+    return (_jsx("div", { className: "flex flex-col items-center justify-center min-h-screen", children: loading ? (_jsx("div", { className: "loading-indicator", children: _jsx("p", { children: "\u30DE\u30C3\u30D7\u3092\u8AAD\u307F\u8FBC\u307F\u4E2D..." }) })) : (_jsxs("div", { className: "bg-white bg-opacity-80 p-8 rounded-2xl shadow-lg max-w-2xl", children: [_jsx("h1", { className: "text-3xl font-extrabold mb-4 text-center text-gray-900 tracking-wide", children: "\u30DE\u30C3\u30D7\u5229\u7528\u306E\u6CE8\u610F\u4E8B\u9805" }), _jsxs("ul", { className: "list-disc pl-5 mb-6 space-y-3 text-lg text-gray-700", children: [_jsx("li", { children: "\u3053\u306E\u30DE\u30C3\u30D7\u306F3D\u8868\u793A\u3067\u3059\u3002\u30C9\u30E9\u30C3\u30B0\u3057\u3066\u8996\u70B9\u3092\u5909\u66F4\u3067\u304D\u307E\u3059\u3002" }), _jsx("li", { children: "\u30D6\u30FC\u30B9\u3092\u30AF\u30EA\u30C3\u30AF\u3059\u308B\u3068\u3001\u5404\u30D6\u30FC\u30B9\u306E\u5546\u54C1\u60C5\u5831\u304C\u8868\u793A\u3055\u308C\u307E\u3059\u3002" }), _jsx("li", { children: "\u5404\u30D6\u30FC\u30B9\u306E\u5546\u54C1\u60C5\u5831\u304B\u3089\u3001\u6C17\u306B\u5165\u3063\u305F\u5546\u54C1\u30923\u7A2E\u985E\uFF08\u54041\u70B9\uFF09\u307E\u3067\u3054\u6CE8\u6587\u3044\u305F\u3060\u3051\u307E\u3059\u3002" }), _jsx("li", { children: "\u30D4\u30F3\u30C1\u30A4\u30F3\u30FB\u30D4\u30F3\u30C1\u30A2\u30A6\u30C8\u307E\u305F\u306F\u30B9\u30AF\u30ED\u30FC\u30EB\u3067\u62E1\u5927\u30FB\u7E2E\u5C0F\u3067\u304D\u307E\u3059\u3002" }), _jsx("li", { children: "\u30B9\u30DE\u30FC\u30C8\u30D5\u30A9\u30F3\u3067\u306E\u95B2\u89A7\u306F\u3001\u6A2A\u5411\u304D\u304C\u304A\u3059\u3059\u3081\u3067\u3059\u3002" }), _jsx("li", { children: "3D\u8868\u793A\u304C\u91CD\u3044\u5834\u5408\u306F\u3001\u30D6\u30E9\u30A6\u30B6\u3092\u518D\u8D77\u52D5\u3057\u3066\u304F\u3060\u3055\u3044\u3002" })] }), _jsx("button", { onClick: handleShowMap, className: "map-button", children: "\u30DE\u30C3\u30D7\u3078GO" })] })) }));
 }
 const booths = [
     // 上段（12ブース）
@@ -25,7 +42,7 @@ const booths = [
     { id: 1, position: [15, 0, -34], size: [6, 1.5, 2], name: "ヱスケー石鹸㈱", description: "パルシステム群馬の組合員が開発に協力！洗浄力が高い “衣類用部分洗い石けんです。「子どもからおとなまで楽しく使える！」をテーマに、成分や香り、石けんのサイズや形状にまでこだわりを詰め込みました。 固形石けんを使ったことのない方も、この商品からぜひお試しください。環境にも人にもやさしい洗濯が楽しくなる石けんです。", hasLink: true, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth1-1.webp?height=70&width=70", image2: "/images/booth1-2.webp?height=70&width=70" },
     // 左列（5ブース）
     { id: 13, position: [-27, 0, -28], size: [2, 1.5, 6], name: "㈱スクロール", description: "スクロールは全国の生協様に衣料品・靴、バッグといった服飾雑貨商品を販売しているアパレルメーカーです！当日は普段触れないお洋服の展示はもちろん、親子で楽しめるオリジナルエコバッグ作り体験を実施いたします！", hasLink: true, link: "https://www.scroll-fan.com/", image: "/images/booth13-1.webp?height=100&width=100", image2: "/images/booth13-2.webp?height=100&width=100" },
-    { id: 90, position: [-27, 0, -22], size: [2, 1.5, 3], name: " マトメブクロヒツジを救え!", description: "来場者のみなさんがご持参いただいた「商品まとめ袋」の総重量を予想しよう!予想が的中したあなたには景品を後日プレゼント!", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth90-1.webp?height=100&width=100", image2: "/images/booth90-2.webp?height=100&width=100" },
+    { id: 90, position: [-27, 0, -22], size: [2, 1.5, 3], name: " マトメブクロヒツジを救え!", description: "来場者のみなさんがご持参いただいた「商品まとめ袋」で、マトメブクロヒツジをモコモコにしよう！", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth90-1.webp?height=100&width=100", image2: "/images/booth90-2.webp?height=100&width=100" },
     { id: 91, position: [-27, 0, -18], size: [2, 1.5, 3], name: "リサイクル探し", description: "ブースの中に隠れる、リサイクルできるものとできないものを“5つ”探すゲームです。ぜひチャレンジしてみてね!", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth91-1.webp?height=100&width=100", image2: "/images/booth91-2.webp?height=100&width=100" },
     { id: 92, position: [-27, 0, -14], size: [2, 1.5, 3], name: "エコ活ど～れだ", description: "街の風景からエコな活動をしているところを探してみよう！君はいくつ見つけられるかな？", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth92-1.webp?height=100&width=100", image2: "/images/booth92-2.webp?height=100&width=100" },
     { id: 93, position: [-27, 0, -10], size: [2, 1.5, 3], name: "射的 de SDGs", description: "「S」「D」「Gs」の的を狙ってshoot!3つを狙って、SDGsを完成させよう!", hasLink: false, link: "https://forms.gle/h5DLVLqZLLykifCJ8", image: "/images/booth93-1.webp?height=100&width=100", image2: "/images/booth93-2.webp?height=100&width=100" },
@@ -113,7 +130,7 @@ export default function Component() {
         mountRef.current.appendChild(renderer.domElement);
         // Environment map
         const loader = new THREE.TextureLoader();
-        const texture = loader.load('images/map/background_new.png', () => {
+        const texture = loader.load('images/map/background_new.webp', () => {
             const rt = new THREE.WebGLCubeRenderTarget(texture.image.height);
             rt.fromEquirectangularTexture(renderer, texture);
             scene.background = rt.texture;
@@ -575,7 +592,7 @@ export default function Component() {
         }
         // 南壁の下に画像を追加
         const imageLoader = new THREE.TextureLoader();
-        imageLoader.load('/images/map/eventmap_info.jpg?v=' + Date.now(), (texture) => {
+        imageLoader.load('/images/map/eventmap_info.webp?v=' + Date.now(), (texture) => {
             const imageAspect = texture.image.width / texture.image.height;
             const scaleFactor = 1.4; // 拡大倍率
             const planeWidth = 40 * scaleFactor; // 幅を2倍に
